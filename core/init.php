@@ -3,10 +3,10 @@ session_start();
 
 $GLOBALS['config'] = array(
     'mysql'=>array(
-        'host'=>'127.10.0.0',
-        'username'=>'',
+        'host'=>'127.0.0.1',
+        'username'=>'root',
         'password'=>'',
-        'db'=>''
+        'db'=>'skData'
     ),
     'remembar'=> array(
         'cookie_name'=>'abadat_cookie',
