@@ -36,6 +36,7 @@ class DB{
                 }
             }
             if( $this->_query->execute() ) {
+                echo 'insdie ';
                 $this->_result = $this->_query->fetchAll($this->_pdo::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
                 echo 'Successfully execute query';
@@ -76,6 +77,50 @@ class DB{
         public function delete($table,$where){
             return $this->action('DELETE', $table,$where);
         }
+
+        public function insert($table,$inserableData = array()){
+                if(count($inserableData)){
+
+                
+                $fields = array_keys($inserableData);
+                $values = '';
+                $x=1;
+                foreach($inserableData as $singleData){
+                    $values .= '?';
+                    if($x < count($inserableData)){
+                        $values .= ', ';
+                    }
+                    $x++;
+                }
+
+                $sql = "INSERT INTO {$table} (`" . implode('`,`', $fields) ."`) VALUES  ({$values})";
+                echo $sql;
+                if(!$this->query($sql,array_values($inserableData))->error()){
+                    return true;
+                }
+            }
+
+         return false;
+        }
+
+        public function update( $table,$id, $updatedData=array() ){
+            $set = '';
+            $x=1;
+            foreach($updatedData as $name=>$value ){
+                $set .= " {$name} = ? ";
+                if($x < count($updatedData)){
+                    $set .=', ';
+                    $x++;
+                }
+            }
+
+            $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+            
+            if( !$this->query($sql,$updatedData)->error() ){
+                echo 'success update';
+            }
+        }
+
 
     public function error(){
       return   $this->_error;
