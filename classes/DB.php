@@ -36,10 +36,8 @@ class DB{
                 }
             }
             if( $this->_query->execute() ) {
-                echo 'insdie ';
                 $this->_result = $this->_query->fetchAll($this->_pdo::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
-                echo 'Successfully execute query';
             }else{
                 $this->_error = true;
             }
@@ -94,7 +92,6 @@ class DB{
                 }
 
                 $sql = "INSERT INTO {$table} (`" . implode('`,`', $fields) ."`) VALUES  ({$values})";
-                echo $sql;
                 if(!$this->query($sql,array_values($inserableData))->error()){
                     return true;
                 }
