@@ -44,11 +44,11 @@ if( Input::exists() ){
 
     <div class="fields">
         <label for="username" > User Name </label>
-        <input name='username' id='username' value="<?php echo Input::get('username') ?>" autocomolete="false" />
+        <input name='username' id='username' value="<?php echo Input::get('username'); ?>" autocomolete="false" />
     </div>
         <div class="fields">
         <label for="name" >Name </label>
-        <input name='name' id='name' value="<?php echo Input::get('name') ?>" autocomolete="false" />
+        <input name='name' id='name' value="<?php echo Input::get('name'); ?>" autocomolete="false" />
     </div>
     <div class="fields">
         <label for="password" > Password </label>
