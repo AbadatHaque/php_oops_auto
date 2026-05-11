@@ -31,7 +31,6 @@ if( Input::exists() ){
         foreach( $validate->getErrors() as $error ){
             echo $error . '</br>';
         }
-        //  print_r($validate->getErrors());
     }
     // echo Input::get('username');
 }else{
@@ -45,11 +44,11 @@ if( Input::exists() ){
 
     <div class="fields">
         <label for="username" > User Name </label>
-        <input name='username' id='username' value="" autocomolete="false" />
+        <input name='username' id='username' value="<?php echo Input::get('username') ?>" autocomolete="false" />
     </div>
         <div class="fields">
         <label for="name" >Name </label>
-        <input name='name' id='name' value="" autocomolete="false" />
+        <input name='name' id='name' value="<?php echo Input::get('name') ?>" autocomolete="false" />
     </div>
     <div class="fields">
         <label for="password" > Password </label>
