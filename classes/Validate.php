@@ -9,9 +9,8 @@ class Validate{
     }
 
     public function check($source,$items=array()){
-print_r($source);
         foreach($items as $field=>$rules){
-            $value = $source[$field];
+           $value = trim($source[$field] ?? '') ;
             foreach($rules as  $ruleType => $ruleValue){
                 if($ruleType == 'required' && empty($value)){
                     $this->addError("{$field} is required");
