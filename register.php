@@ -41,7 +41,8 @@ if( Input::exists() ){
             try{
                 $user->registerUser($userData);
                   Session::flash('success', 'You have been successfully register .');
-            header('Location: index.php');
+            // header('Location: index.php');
+            Redirect::to('index.php');
             }catch(Exception $e){
                 die($e->getMessage());
             }

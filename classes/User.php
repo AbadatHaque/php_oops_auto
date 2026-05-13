@@ -14,4 +14,28 @@ class User{
             throw new Exception('This is a problem to register a user .');
         }
     }
+
+    public function find($data){
+        $tableName = 'user';
+        $field = 'username';
+        if(is_numeric($data)){
+            $field = 'id';
+        }
+        
+       
+        return false;
+    }
+
+    public function login($username='',$password=''){
+        $user = $this-_db->get('user', array('username', '=', $username));
+        if($user->count()){
+            $userData = $user->first();
+          $isAuthenticate = Hash::check($password, $userData->password);
+            if(isAuthenticate){
+
+            }else{
+                echo "Credentials do not match";
+            }
+        }
+    }
 }
