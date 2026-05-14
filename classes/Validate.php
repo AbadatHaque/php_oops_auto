@@ -60,5 +60,4 @@ class Validate{
     public function getPass(){
         return $this->_passes;
     }
-
 }

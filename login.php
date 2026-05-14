@@ -1,6 +1,7 @@
 <?php
+require_once 'core/init.php';
 if(Input::exists()){
-
+    // echo 'true exists';
     $validate = new Validate();
     $validation = $validate->check($_POST, array(
         'username'=>array(
@@ -11,6 +12,22 @@ if(Input::exists()){
         )
         ));
 
+       if($validate->getPass()){
+        $user = new User();
+        $username = Input::get('username');
+        $password = Input::get('password');
+        //  print_r($user);
+        if($user->login($username, $password)){
+            Redirect::to('index.php');
+           echo 'authenticate';
+        }else{
+            echo "Credentials do not match";
+        }
+       }else{
+         foreach( $validate->getErrors() as $error){
+            echo $error . '</br>';
+         }
+       }
 
 }
 

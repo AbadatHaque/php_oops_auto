@@ -130,7 +130,13 @@ class DB{
         return $this->_result;
     }
 
-
+    public function first(){
+        $result = $this->getResult();
+        if(!empty($result) ){
+            return $result[0];
+        }
+        return false;
+    }
 
 
 }
